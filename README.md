@@ -1,4 +1,4 @@
-# Product listing
+# Product listing with size react component
 
 ## Project setup
 ```

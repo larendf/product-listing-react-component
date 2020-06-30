@@ -1,12 +1,25 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import SelectboxSize from './components/SelectboxSize';
-import ProductListing from "./components/ProductListing";
-import ErrorMessage from './components/ErrorMessage';
+import ProductListing from "./components/ProductListing/ProductListing";
+import MessageBox from './components/MessageBox/MessageBox';
+import SelectBox from './components/SelectBox/SelectBox';
 
-let INIT_STATE = [];
 
+let INITIAL_STATE = [];
 class App extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            products: [],
+            serviceError: false,
+            selectedSize: "",
+            initial_state: this.products
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.getSizes = this.getSizes.bind(this);
+    }
+
     componentDidMount() {
         axios.get(`https://api.jsonbin.io/b/5e7457bfc4a5cb1628677953`, {
             headers: {
@@ -26,30 +39,8 @@ class App extends Component {
         );
     }
 
-    constructor() {
-        super();
-        this.state = {
-            products: [],        
-            INIT_STATE: this.products,
-            serviceError: false,
-        }
-        this.autoChange = this.autoChange.bind(this);
-        this.getSize = this.getSize.bind(this);
-    }
-
-    autoChange(event) {
-        const { value } = event.target,
-            products = INIT_STATE;
-        if (value <= 0) {
-            this.setState({products: INIT_STATE});
-        } else {
-            const filteredProducts = products.filter(element => element.size.includes(value));
-            this.setState({ products : filteredProducts })
-        }
-    }
-
-    getSize() {
-        const sizeChartMap = ["XS", "S", "M", "L", "XL"];
+    getSizes() {
+        const sizeChartMap = ["XXS","XXS", "XS", "S", "M", "L", "XL", "XXL", "XXXL", "XXXXL", "XXXXXL"];
         let uniqueSizesArray = [];
         this.state.products.forEach(product => uniqueSizesArray = [...uniqueSizesArray, ...product.size]);
         uniqueSizesArray = [...new Set([...uniqueSizesArray])];
@@ -57,22 +48,29 @@ class App extends Component {
         return serialisedSizesArray;
     }
 
+    handleChange(e) {
+        const { value } = e.target,
+            products = INITIAL_STATE;
+        if (value <= 0) {
+            this.setState({products: INITIAL_STATE});
+        } else {
+            const filteredProducts = products.filter(element => element.size.includes(value));
+            this.setState({ products : filteredProducts })
+        }
+    }
     render() {
         return (
-            <React.Fragment>               
-                <section className="component-wrapper">
-                    <div className="component-wrapper-header">
-                        <h2>Women's Tops</h2>
-                        <SelectboxSize onChange={this.autoChange} options={this.getSize()} usedFor="selectbox-size" />
+            <React.Fragment>
+                <main id="app-wrapper">
+                    <div id="section-header">
+                        <h2>Women's tops</h2>
+                        <SelectBox onChange={this.handleChange} options={this.getSizes()} usedFor="sizeFilter" />
                     </div>
-                    {this.state.serviceError ? 
-                    <ErrorMessage status={'error'} errorMessage={"Service Error!"} /> : 
-                    <ProductListing products={this.state.products} />}
-                </section>
+                    {this.state.serviceError ? <MessageBox status={'error'} message={"Error messaage!"} /> : <ProductListing products={this.state.products} />}
+                </main>
             </React.Fragment>
         )
     }
-
 }
 
 export default App;

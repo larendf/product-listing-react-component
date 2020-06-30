@@ -1,0 +1,67 @@
+@mixin font-face($family: $primary-font, $weight: false, $style: normal) {
+  font-family: $family, Helvetica, Arial, sans-serif;
+  @if $weight {
+    font-weight: $weight;
+  }
+  font-style: $style;
+}
+
+@mixin font-size($size, $base: 10) {
+  font-size: $size + px;
+  font-size: ($size / $base) * 1rem;
+}
+
+@mixin add-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin box($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+//@include box(50px);
+
+@mixin cf {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+@mixin align-center {
+  display: block;
+  margin: 0 auto;
+}
+
+@mixin screen($size) {
+  @if $size == phoneLandscape {
+    @media only screen and (min-width: $breakpoint-phone-landscape) {
+      @content;
+    }
+  } @else if $size == tablet {
+    @media only screen and (min-width: $breakpoint-tablet) {
+      @content;
+    }
+  } @else if $size == desktopSmall {
+    @media only screen and (min-width: $breakpoint-desktop-small) {
+      @content;
+    }
+  } @else if $size == desktopLarge {
+    @media only screen and (min-width: $breakpoint-desktop-large) {
+      @content;
+    }
+  } @else {
+    @media only screen and #{$size} {
+      @content;
+    }
+  }
+}
