@@ -1,0 +1,102 @@
+[
+    {
+        "size": [
+            "XS",
+            "S",
+            "L",
+            "XL"
+        ],
+        "productName": "Striped shirt",
+        "productImage": "product-1.jpg",
+        "price": "$18.88",
+        "isExclusive": false,
+        "isSale": true,
+        "index": 0
+    },
+    {
+        "size": [
+            "XS",
+            "S"
+        ],
+        "productName": "Denim blue shirt",
+        "productImage": "product-2.jpg",
+        "price": "$25.44",
+        "isExclusive": false,
+        "isSale": false,
+        "index": 1
+    },
+    {
+        "size": [
+            "S",
+            "M"
+        ],
+        "productName": "Grey V-neck tshirt",
+        "productImage": "product-3.jpg",
+        "price": "$12.93",
+        "isExclusive": true,
+        "isSale": false,
+        "index": 2
+    },
+    {
+        "size": [
+            "XL"
+        ],
+        "productName": "Full sleeve slim dress - grey",
+        "productImage": "product-4.jpg",
+        "price": "$26.32",
+        "isExclusive": false,
+        "isSale": false,
+        "index": 3
+    },
+    {
+        "size": [
+            "M",
+            "L"
+        ],
+        "productName": "Shirt white full sleeve",
+        "productImage": "product-5.jpg",
+        "price": "$12.16",
+        "isExclusive": false,
+        "isSale": false,
+        "index": 4
+    },
+    {
+        "size": [
+            "XS",
+            "S",
+            "M"
+        ],
+        "productName": "Full sleeve slim dress - grey",
+        "productImage": "product-6.jpg",
+        "price": "$30.27",
+        "isExclusive": false,
+        "isSale": false,
+        "index": 5
+    },
+    {
+        "size": [
+            "M",
+            "L",
+            "XL"
+        ],
+        "productName": "Jacket",
+        "productImage": "product-7.jpg",
+        "price": "$24.26",
+        "isExclusive": false,
+        "isSale": true,
+        "index": 6
+    },
+    {
+        "size": [
+            "XS",
+            "S",
+            "XL"
+        ],
+        "productName": "Sweater",
+        "productImage": "product-8.jpg",
+        "price": "$17.73",
+        "isExclusive": true,
+        "isSale": false,
+        "index": 7
+    }
+]
