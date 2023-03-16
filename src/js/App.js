@@ -21,11 +21,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        axios.get(`https://api.jsonbin.io/b/5e7457bfc4a5cb1628677953`, {
-            headers: {
-               'secret-key':'$2b$10$p1ldbd6RIL1sVb4vrvt68.x/qac5cDWRtFTJvfVnoYBWFMxXsFDVG' 
-            }
-        })
+        axios.get(`https://raw.githubusercontent.com/larendf/product-listing-react-component/master/src/products.json`)
         .then(
             res => {
                 const products = res.data;
